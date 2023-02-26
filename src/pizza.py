@@ -50,7 +50,7 @@ def ingredients_by_name(pizza_name, pizza_data):
                         ingredients[i] = item.split(' and ')[0]
                 return ingredients    
             return pizza['Description'].split(', ')
-            
+
 if __name__ == '__main__':
     print(ingredients_by_name('Sorrento', pizza_dictionary_list))
     print(ingredients_by_name('Capri', pizza_dictionary_list))
@@ -99,3 +99,25 @@ if __name__ == '__main__':
         print(i)
     print('end')
     print(dir())
+
+# delete Pizza given pizz name
+
+def delete_pizza(pizza_name, pizza_data):
+    for i, row in enumerate(pizza_data):
+        if row['Pizza'] == pizza_name:
+            pizza_data.pop(i)
+
+
+# update original file 
+def update_data_files(pizza_data):
+    lines_list = []
+    lines_list.append([key for key, value in pizza_data[0].items()])
+    for i, row in enumerate(pizza_data):
+        lines_list.append([value for key, value in pizza_data[i].items()])
+    with open('./data/new_pizza.csv', 'w', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f)
+        writer.writerows(lines_list)
+
+# discount prices 
+# increase price by percentage
+# cheack weather a pizza is vegeterian sutible
