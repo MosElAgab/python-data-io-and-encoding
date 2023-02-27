@@ -11,8 +11,9 @@ print(len(cars_data))
 print(type(cars_data))
 print_keys(cars_data)
 
-my_list =  get_vin(cars_data, make='Ford')
-my_other_list = get_cars(cars_data, make='Ford', colour = 'Light green')
+my_list =  get_vin(cars_data, colour = 'Blue')
+my_other_list = get_cars(cars_data, colour = 'Blue')
 # print(my_list)
-for i in my_other_list:
-    print(i)
+for i, car in enumerate(my_other_list):
+    # print(my_list[i])
+    print(car['vin'], car['make'], car['model'])
